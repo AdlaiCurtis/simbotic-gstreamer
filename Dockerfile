@@ -30,7 +30,8 @@ RUN apt-get update && sudo apt-get install -y \
     libfontconfig1-dev libfreetype6-dev \
     x11-xserver-utils libx11-dev libxext-dev libxfixes-dev libxi-dev libxrender-dev libxcb1-dev libx11-xcb-dev libxcb-glx0-dev \
     libasound2-dev libavcodec-dev libavformat-dev libswscale-dev \
-    libwebrtc-audio-processing-dev libnvidia-encode-430
+    libwebrtc-audio-processing-dev libnvidia-encode-430 \
+    libsrtp2-dev
 
 RUN apt-get upgrade -y && apt-get autoremove
 
