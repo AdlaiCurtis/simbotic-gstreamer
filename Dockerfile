@@ -30,11 +30,10 @@ RUN apt-get update && sudo apt-get install -y \
     libfontconfig1-dev libfreetype6-dev \
     x11-xserver-utils libx11-dev libxext-dev libxfixes-dev libxi-dev libxrender-dev libxcb1-dev libx11-xcb-dev libxcb-glx0-dev \
     libasound2-dev libavcodec-dev libavformat-dev libswscale-dev \
-    libwebrtc-audio-processing-dev
+    libwebrtc-audio-processing-dev libnvidia-encode-430
 
 RUN apt-get upgrade -y && apt-get autoremove
 
-COPY nvidia-video/lib/linux/stubs/x86_64/* /usr/local/cuda/lib64/stubs/
 COPY nvidia-video/include/* /usr/local/cuda/include/
 
 COPY bashrc /etc/bash.bashrc
