@@ -56,6 +56,7 @@ RUN curl https://sh.rustup.rs -sSf | \
 ENV PATH=/home/sim/.cargo/bin:$PATH
 
 RUN git clone -b 0.1.16 --single-branch https://gitlab.freedesktop.org/libnice/libnice.git
+RUN git clone -b master --single-branch https://github.com/sctplab/usrsctp.git
 RUN git clone -b 1.16 --single-branch https://gitlab.freedesktop.org/gstreamer/gst-libav.git
 RUN git clone -b 1.16 --single-branch https://gitlab.freedesktop.org/gstreamer/gstreamer.git
 RUN git clone -b 1.16 --single-branch https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
@@ -66,6 +67,8 @@ RUN git clone -b 1.16 --single-branch https://gitlab.freedesktop.org/gstreamer/g
 COPY build_gstreamer.sh build_gstreamer.sh
 RUN sudo chmod +x build_gstreamer.sh
 RUN ./build_gstreamer.sh
+
+RUN cargo install fd-find ripgrep
 
 CMD ["bash"]
 
