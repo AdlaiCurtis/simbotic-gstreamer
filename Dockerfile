@@ -18,6 +18,9 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=America/Detroit
 RUN apt-get update && apt-get install -y tzdata
 
+RUN apt-get install -y --no-install-recommends libpulse-dev pulseaudio-utils
+COPY pulseaudio-client.conf /etc/pulse/client.conf
+
 RUN apt-get update && sudo apt-get install -y \
     gtk-doc-tools libglib2.0-dev bison flex gettext graphviz yasm \
     liborc-0.4-0 liborc-0.4-dev libvorbis-dev libcdparanoia-dev \
@@ -46,7 +49,8 @@ ARG GROUP_ID=1000
 RUN groupadd -g ${GROUP_ID} sim && \
     useradd -m -l -u ${USER_ID} -g sim sim && \
     echo "sim:sim" | chpasswd && adduser sim sudo && \
-    echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+    echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
+    usermod -a -G audio,video sim
 
 USER sim
 WORKDIR /home/sim

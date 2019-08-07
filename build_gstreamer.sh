@@ -52,7 +52,6 @@ sudo make install
 sudo ldconfig
 popd
 
-
 pushd gst-plugins-bad
 ./autogen.sh --enable-orc --disable-gtk-doc --with-cuda-prefix=/usr/local/cuda
 make -j$(nproc)

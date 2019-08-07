@@ -25,6 +25,12 @@ By stacking WebRTC on top, we get low-latency multi-party peer-to-peer communica
 
 By removing components from the top, we get fast stream-based networking over SRTP and fast message-based networking over SCTP. With optionally disabled authentication and encryption for trusted systems.
 
-This low level stack does not provide signalling, connection, nor key management. These features would be provided by a centralized REST service, WebSockets server and/or a distributed libp2p network.
+This low level stack does not provide signalling. Signalling would be provided by a centralized REST service, WebSockets server and/or a distributed libp2p network; a Reliable Edge Stack.
 
 
+# Setup
+
+On host, create pulseaudio socket
+```
+pactl load-module module-native-protocol-unix socket=/tmp/pulseaudio.socket
+```
